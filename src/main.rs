@@ -7,9 +7,10 @@ fn main() {
     let listener = TcpListener::bind("0.0.0.0:7878").unwrap();
 
     for stream in listener.incoming() {
-        let stream = stream.unwrap();
+        let mut stream = stream.unwrap();
+        stream.write_all(b"yo!").unwrap();
 
-        handle_connection(stream);
+        // handle_connection(stream);
     }
 }
 
@@ -23,5 +24,4 @@ fn handle_connection(mut stream: TcpStream) {
 
     println!("Request: {http_request:#?}");
 
-    stream.write_all(b"yo!").unwrap();
 }
