@@ -22,4 +22,6 @@ fn handle_connection(mut stream: TcpStream) {
         .collect();
 
     println!("Request: {http_request:#?}");
+
+    stream.write_all(b"yo!").unwrap();
 }
