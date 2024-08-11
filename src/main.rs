@@ -10,18 +10,9 @@ fn main() {
     for stream in listener.incoming() {
         let mut stream = stream.unwrap();
 
-        thread::spawn(move || {
-            loop {
-                stream.write_all(b"yo!").unwrap();
-    
-                let ten_millis = time::Duration::from_millis(1000);
-                let now = time::Instant::now();
-    
-                thread::sleep(ten_millis);
-            }
-        });
+        stream.write_all(b"yo!").unwrap();
 
-        // handle_connection(stream);
+        handle_connection(stream);
     }
 }
 
