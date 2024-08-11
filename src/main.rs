@@ -12,7 +12,7 @@ fn main() {
 
 
         for _ in 0..100 {
-            stream.write_all(b"yo!").unwrap();
+            stream.write_all(b"yoasdfasdfadsfadfadsfadsfadsfasdfadsfadsfad!").unwrap();
             std::thread::sleep(std::time::Duration::from_millis(100));
         }
 
