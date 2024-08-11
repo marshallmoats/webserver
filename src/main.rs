@@ -10,7 +10,11 @@ fn main() {
     for stream in listener.incoming() {
         let mut stream = stream.unwrap();
 
-        stream.write_all(b"yo!").unwrap();
+
+        for _ in 0..100 {
+            stream.write_all(b"yo!").unwrap();
+            std::thread::sleep(std::time::Duration::from_millis(100));
+        }
 
         handle_connection(stream);
     }
